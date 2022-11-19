@@ -22,7 +22,7 @@ class RemixIconTextView : TextView {
         Typeface.createFromAsset(context.assets, RemixIconData.fontPath)
     }
 
-    private var iconName: String
+     var iconName: String
         set(value) {
             field = value
             iconNameToUnicode()
