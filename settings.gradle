@@ -1,3 +1,5 @@
-include ':xandroidUtil'
+include ':xAndroidUtil'
+project(':xAndroidUtil').projectDir = new File(settingsDir, '/xandroidUtil')
+
 include ':app'
 rootProject.name = "XAndroidUtil"
