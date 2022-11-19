@@ -1,7 +1,25 @@
 # Android工具库
 
+<meta name="referrer" content="no-referrer">
+
+<img src="https://jitpack.io/v/stars-one/xAndroidUtil.svg" />
+
 封装自己常用的一些Android的组件或工具
 
+## 依赖
+
+需要先引用JitPack仓库源
+
+```
+<dependency>
+    <groupId>com.github.stars-one</groupId>
+    <artifactId>xAndroidUtil</artifactId>
+    <version>0.1</version>
+</dependency>
+
+
+implementation 'com.github.stars-one:xAndroidUtil:0.1'
+```
 ## 全局配置工具类
 
 使用此工具类可以不用关注配置项的保存或进入APP的初始化读取配置
