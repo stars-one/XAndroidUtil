@@ -87,3 +87,13 @@ val tvHome = findViewById<RemixIconTextView>(R.id.tvHome)
 tvHome.iconName = "home-5-fill"
 ```
 
+## 3.工具类方法
+
+> PS: 位于`XAndroidMethod`类中
+
+- `openUrlByDefaultBrower` 使用默认浏览器打开网址
+- `openUrlByBrower` 弹窗选择浏览器打开链接
+
+## 4.主题样式
+
+- `ripple_common_bg.xml` 水波纹背景
