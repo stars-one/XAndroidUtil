@@ -15,6 +15,8 @@ import site.starsone.xandroidutil.R
 class RemixIconTextView : TextView {
     val TAG = "RemixIconTextView"
 
+    val androidTextSize = intArrayOf(android.R.attr.textSize)
+
     private val iconfont: Typeface by lazy {
         //初始化读取图标库数据
         RemixIconData.init()
@@ -34,9 +36,7 @@ class RemixIconTextView : TextView {
 
         iconName = typearr.getString(R.styleable.RemixIconTextView_iconName) ?: ""
         //设置默认字体大小为16sp
-        textSize = 20f
         typearr.recycle()
-
         iconNameToUnicode()
     }
 
