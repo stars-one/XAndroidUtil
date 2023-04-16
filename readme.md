@@ -55,6 +55,15 @@ val value = GlobalData.userName.currentValue()
 val value = GlobalData.userName.setValue("myname")
 ```
 
+新增监听回调功能,用法如下:
+```kotlin
+GlobalData.userName.addCallBack{
+    //里面你的逻辑,如
+    val valueResult = GlobalData.userName.currentValue
+}
+```
+
+**当配置的数据发生变更,都会执行一次回调**
 
 ## 2.Remix图标
 将[Remix Icon图标](https://remixicon.com/)封装在Android中,方便快速调用
