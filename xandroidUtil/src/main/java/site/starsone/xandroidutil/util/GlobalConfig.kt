@@ -8,6 +8,8 @@ class GlobalDataConfig<T>(
     val defaultValue: T,
     var currentValue: T = defaultValue
 ) {
+    private val callBackList = arrayListOf<(() -> Unit)>()
+
     init {
         when {
             defaultValue is Boolean -> {
@@ -30,6 +32,15 @@ class GlobalDataConfig<T>(
     }
 
     /**
+     * 添加回调
+     *
+     * @param callBack
+     * @receiver
+     */
+    fun addCallBack(callBack: (() -> Unit)) {
+        callBackList.add(callBack)
+    }
+    /**
      * 重置当前值为默认值
      */
     fun resetValue() {
@@ -45,6 +56,11 @@ class GlobalDataConfig<T>(
 
         //更新本地存储的数据
         updateLocalStorage(value)
+
+        //回调监听
+        callBackList.forEach {
+            it.invoke()
+        }
     }
 
     /**
