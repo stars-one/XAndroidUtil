@@ -11,6 +11,7 @@
     <site.starsone.xandroidutil.view.RemixIconTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="30sp"
         app:iconName="home-5-fill" />
 
     <TextView

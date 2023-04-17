@@ -21,6 +21,7 @@ class RemixIconTextView : TextView {
         val inputStream = context.resources.assets.open(RemixIconData.jsonPath)
         val json = inputStream.bufferedReader().readText()
         RemixIconData.init(json)
+
         //读取图标字体
         val iconFont = TypefaceCompat.createFromResourcesFontFile(
             context,
@@ -28,8 +29,9 @@ class RemixIconTextView : TextView {
             R.font.remixicon,
             "",
             0
-        );
-        iconFont!!
+        )
+
+        iconFont ?: Typeface.createFromAsset(context.assets, RemixIconData.fontPath)
     }
 
     var iconName: String = ""
@@ -68,6 +70,7 @@ object RemixIconData {
     val iconIndexMap = hashMapOf<String, String>()
 
     val jsonPath = "remixicon.json"
+    val fontPath = "remixicon.ttf"
 
     fun init(json: String) {
         if (iconIndexMap.isEmpty()) {
