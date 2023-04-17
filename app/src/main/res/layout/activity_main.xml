@@ -25,4 +25,25 @@
         android:text="跳转下个页面"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@color/black"/>
+        <site.starsone.xandroidutil.view.SlantedTextView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            app:slantedBackgroundColor="@color/design_default_color_primary"
+            app:slantedLength="40dp"
+            app:slantedMode="left"
+            app:slantedText="付费"
+            app:slantedTextColor="@color/white"
+            app:slantedTextSize="16sp"
+            />
+    </FrameLayout>
 </LinearLayout>
