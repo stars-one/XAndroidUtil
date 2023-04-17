@@ -106,3 +106,46 @@ tvHome.iconName = "home-5-fill"
 ## 4.主题样式
 
 - `ripple_common_bg.xml` 水波纹背景
+
+## 5.SlantedTextView
+
+一个倾斜的TextView,适用于标签效果,搬运[HeZaiJin/SlantedTextView: Android slanted TextView.](https://github.com/HeZaiJin/SlantedTextView)
+
+预览效果
+
+![](https://img2023.cnblogs.com/blog/1210268/202304/1210268-20230417232729946-1292926138.png)
+
+### xml使用
+
+```
+<com.haozhang.lib.SlantedTextView
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:gravity="center"
+    app:slantedBackgroundColor="@color/secondary_text"
+    app:slantedLength="40dp"
+    app:slantedMode="left"
+    app:slantedText="IOS"
+    app:slantedTextColor="@color/primary"
+    app:slantedTextSize="16sp"
+    />
+```
+
+### Java使用
+```
+SlantedTextView stv = (SlantedTextView) findViewById(R.id.test);
+
+stv.setText("PHP")
+        .setTextColor(Color.WHITE)
+        .setSlantedBackgroundColor(Color.BLACK)
+        .setTextSize(18)
+        .setSlantedLength(50)
+        .setMode(SlantedTextView.MODE_LEFT);
+```
+
+### 属性说明
+
+![](https://img2023.cnblogs.com/blog/1210268/202304/1210268-20230417232809423-1380328654.png)
+
+### SlantedMode模式可选项
+![](https://img2023.cnblogs.com/blog/1210268/202304/1210268-20230417232833635-1688884951.png)
