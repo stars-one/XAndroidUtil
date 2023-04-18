@@ -68,7 +68,7 @@ GlobalData.userName.addCallBack{
 ## 2.Remix图标
 将[Remix Icon图标](https://remixicon.com/)封装在Android中,方便快速调用
 
-基于Remix的2.5.0版本
+基于Remix的3.2.0版本
 
 在xml使用
 
