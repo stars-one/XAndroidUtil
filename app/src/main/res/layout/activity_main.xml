@@ -26,6 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <Button
+        android:id="@+id/btnGotoLog"
+        android:text="进入日志查看页面"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

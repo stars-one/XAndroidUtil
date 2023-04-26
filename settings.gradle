@@ -1,5 +1,7 @@
 include ':xAndroidUtil'
 project(':xAndroidUtil').projectDir = new File(settingsDir, '/xandroidUtil')
+include ':xlogLibrary'
+project(':xlogLibrary').projectDir = new File(settingsDir, '/logLibrary')
 
 include ':app'
 rootProject.name = "XAndroidUtil"

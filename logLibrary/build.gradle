@@ -1,0 +1,69 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+
+    // 资源前缀限制
+    resourcePrefix "logcat_"
+
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 16
+        versionCode 1060
+        versionName "10.6"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+afterEvaluate {
+    // 排除 BuildConfig.class
+    generateReleaseBuildConfig.enabled = false
+    generateDebugBuildConfig.enabled = false
+}
+
+dependencies {
+    // noinspection GradleCompatible
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    // noinspection GradleCompatible
+    implementation 'com.google.android.material:material:1.4.0'
+    // 悬浮窗框架：https://github.com/getActivity/XToast
+    api 'com.github.getActivity:XToast:8.5'
+    //Android工具类 https://github.com/Blankj/AndroidUtilCode
+    implementation 'com.blankj:utilcodex:1.31.0'
+    implementation "androidx.core:core-ktx:1.3.2"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+repositories {
+    mavenCentral()
+}
