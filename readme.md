@@ -149,3 +149,13 @@ stv.setText("PHP")
 
 ### SlantedMode模式可选项
 ![](https://img2023.cnblogs.com/blog/1210268/202304/1210268-20230417232833635-1688884951.png)
+
+## 6.日志查看功能
+
+移植了[getActivity / Logcat](https://github.com/getActivity/Logcat)开源库的功能,稍微调整了下样式
+
+通过下面的代码跳转到页面,可看到效果
+
+```kotlin
+startActivity(LogcatActivity::class.java)
+```
