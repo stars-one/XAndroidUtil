@@ -40,6 +40,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
 
     //Android工具类 https://github.com/Blankj/AndroidUtilCode
-    api 'com.blankj:utilcodex:1.31.0'
+    api 'com.blankj:utilcodex:1.31.1'
     implementation 'org.apache.commons:commons-text:1.9'
+    implementation project(":xlogLibrary")
 }
