@@ -159,3 +159,11 @@ stv.setText("PHP")
 ```kotlin
 startActivity(LogcatActivity::class.java)
 ```
+## 7.扩展方法
+
+- `Long.toDateString` long类型转时间字符串
+- `Date.toDateString` date类型转时间字符串
+- `Long.toUnitString` 字节转为对应的单位
+- `Double.toFix` double保留几位小数
+- `String.parseJsonToList` json字符串转List对象
+- `String.parseJsonToObject` json字符串转Object对象
