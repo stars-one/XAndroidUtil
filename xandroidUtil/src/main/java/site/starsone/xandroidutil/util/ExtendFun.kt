@@ -31,6 +31,32 @@ fun Long.toUnitString(): String {
 }
 
 /**
+ * 前置补0操作
+ *
+ * 例子:
+ * - `1.fillZero(3)` //结果为"001"
+ * - `112.fillZero(3)` //结果为"112"
+ *
+ * @param maxLength 最大位数
+ */
+fun Int.fillZero(maxLength:Int):String{
+    return String.format("%0${maxLength}d", this)
+}
+
+/**
+ * 前置补0操作
+ *
+ * 例子:
+ * - `1L.fillZero(3)` //结果为"001"
+ * - `112L.fillZero(3)` //结果为"112"
+ *
+ * @param maxLength 最大位数
+ */
+fun Long.fillZero(maxLength:Int):String{
+    return String.format("%0${maxLength}d", this)
+}
+
+/**
  * Double保留几位小数
  *
  * @param num
