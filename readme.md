@@ -172,4 +172,4 @@ startActivity(LogcatActivity::class.java)
 
 ## 8.XActivityUtil
 
-- `joinQqGroup()` 跳转qq的加入群的页面方法
+- `joinQqGroup()` 跳转qq的加入群的页面方法,需要传个qq群号
