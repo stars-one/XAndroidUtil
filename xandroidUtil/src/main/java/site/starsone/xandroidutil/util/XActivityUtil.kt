@@ -5,7 +5,7 @@ import android.net.Uri
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.ToastUtils
 
-class XActivityUtil {
+object XActivityUtil {
     /**
      * 跳转qq的加入群的页面
      * @param qqGroupNumber QQ群号码
