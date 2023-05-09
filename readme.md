@@ -167,3 +167,7 @@ startActivity(LogcatActivity::class.java)
 - `Double.toFix` double保留几位小数
 - `String.parseJsonToList` json字符串转List对象
 - `String.parseJsonToObject` json字符串转Object对象
+
+## 8.XActivityUtil
+
+- `joinQqGroup()` 跳转qq的加入群的页面
