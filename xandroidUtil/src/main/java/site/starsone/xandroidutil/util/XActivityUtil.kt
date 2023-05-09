@@ -9,7 +9,7 @@ object XActivityUtil {
     /**
      * 跳转qq的加入群的页面
      * @param qqGroupNumber QQ群号码
-     * @param error 错误提示的逻辑
+     * @param error 错误提示的逻辑lambda函数
      */
     fun joinQqGroup(qqGroupNumber: String, error: (() -> Unit)? = null) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("mqqapi://card/show_pslcard?src_type=internal&version=1&uin=$qqGroupNumber&card_type=group&source=qrcode"))
