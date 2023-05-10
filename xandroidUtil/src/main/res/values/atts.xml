@@ -21,4 +21,10 @@
             <enum name="right_bottom_triangle" value="7" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="FloatingActionBtnMenu">
+        <attr name="iconColor" format="color"/>
+        <attr name="iconBgColor" format="color"/>
+    </declare-styleable>
+
 </resources>

@@ -120,6 +120,8 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
     }
 
     init {
+
+
         this.orientation = VERTICAL
         this.gravity = Gravity.END or Gravity.BOTTOM
         layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
@@ -161,6 +163,22 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
         //按钮组放在前面
         addView(llFabMenuItems, 0)
 
+
+        //读取xml中的属性
+        val typearr = context.obtainStyledAttributes(attrs, R.styleable.FloatingActionBtnMenu)
+
+        val iconBgColor = typearr.getColor(
+            R.styleable.FloatingActionBtnMenu_iconBgColor,
+            ColorUtils.getColor(R.color.purple_700)
+        )
+
+        val iconColor = typearr.getColor(
+            R.styleable.FloatingActionBtnMenu_iconColor,
+            ColorUtils.getColor(R.color.white)
+        )
+        typearr.recycle()
+
+        setMainBtnStyle(iconColor, iconBgColor)
     }
 
     /**
@@ -172,7 +190,7 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
         @ColorInt iconColor: Int = ColorUtils.getColor(R.color.white),
         @ColorInt iconBgColor: Int = ColorUtils.getColor(R.color.purple_700)
     ) {
-        mAddButton.setBackgroundColor(iconBgColor)
+        mAddButton.backgroundTintList = ColorStateList.valueOf(iconBgColor)
         mAddButton.imageTintList = ColorStateList.valueOf(iconColor)
     }
 
@@ -265,7 +283,8 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
         menuItemStyle?.let {
             cardView.setCardBackgroundColor(it.textBgColor)
             tvDesc.setTextColor(it.textColor)
-            fabMenuItem.setBackgroundColor(it.iconBgColor)
+
+            fabMenuItem.backgroundTintList = ColorStateList.valueOf(it.iconBgColor)
             fabMenuItem.imageTintList = ColorStateList.valueOf(it.iconColor)
         }
         addFloatingActionButton(view)
