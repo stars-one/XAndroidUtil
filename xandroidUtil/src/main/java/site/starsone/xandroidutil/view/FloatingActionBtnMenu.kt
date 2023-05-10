@@ -233,6 +233,7 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
         onclickAction: () -> Unit
     ) {
         val view = LayoutInflater.from(context).inflate(R.layout.fab_menu_item, null)
+        view.layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
 
         val tvDesc = view.findViewById<TextView>(R.id.tvDesc)
         val cardView = view.findViewById<CardView>(R.id.cardView)
