@@ -40,6 +40,11 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
     lateinit var mAddButton: FloatingActionButton
     private val mButtons = arrayListOf<View>()
 
+    /**
+     * 主按钮的点击事件
+     */
+    private var mainBtnClickAction: ((View) -> Unit)? = null
+
     private val llFabMenuItems = LinearLayout(getContext())
 
     init {
@@ -82,7 +87,13 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
         addView(mAddButton)
 
         // 监听添加按钮的点击事件
-        mAddButton.setOnClickListener { toggle() }
+        mAddButton.setOnClickListener {
+            if (mButtons.isEmpty()) {
+                mainBtnClickAction?.invoke(it)
+            } else {
+                toggle()
+            }
+        }
 
         //按钮组放在前面
         addView(llFabMenuItems, 0)
@@ -103,6 +114,13 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
         typearr.recycle()
 
         setMainBtnStyle(iconColor, iconBgColor)
+    }
+
+    /**
+     * 设置主按钮的点击事件
+     */
+    fun setMainBtnClickListener(mainBtnClickAction: ((View) -> Unit)) {
+        this.mainBtnClickAction = mainBtnClickAction
     }
 
     // 添加悬浮按钮到容器内
@@ -235,7 +253,6 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
         llFabMenuItems.startAnimation(boxCollapseAnim)
 
     }
-
 
 
     /**
