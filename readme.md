@@ -250,7 +250,7 @@ fabMenu.buildItemsByListData(list) {
     }
 }
 ```
-## 样式修改
+### 样式修改
 
 样式数据实体类为MenuItemStyle,解释如下:
 
@@ -272,3 +272,16 @@ data class MenuItemStyle(
 使用`buildItemsByMenuData()`方法来构建的话,可以使用第二个参数,接收一个List<MenuItemStyle>来设置每个item的样式颜色,**注意要和menu资源文件的item项数要保持一致!**
 
 而使用`buildItemsByListData()`方法来构建的话,FloatingActionBtnMenu.MenuItemData实体类里的第三个参数可附加样式
+
+### 单独使用
+
+考虑到自己APP的需求,有时候可能APP只会有个添加功能,就懒得改回使用FAB了,索性就让这个组件支持单个使用(即点击后不会弹出多个按钮了)
+
+使用的话很简单,设置一下点击事件即可(不创建多个菜单子项就可以了),如下代码所示
+
+```kotlin
+val fabMenu = findViewById<FloatingActionBtnMenu>(R.id.fabMenu)
+fabMenu.setMainBtnClickListener{
+    //点击操作...
+}
+```
