@@ -173,3 +173,102 @@ startActivity(LogcatActivity::class.java)
 ## 8.XActivityUtil
 
 - `joinQqGroup()` 跳转qq的加入群的页面方法,需要传个qq群号
+
+
+## 9.FloatingActionBtnMenu 悬浮按钮组菜单
+
+用了第三方,感觉他们的api使用有些麻烦,自己抽空实现了一个简单的垂直排列的悬浮按钮
+
+### 效果
+![](https://img2023.cnblogs.com/blog/1210268/202305/1210268-20230510204145313-924436435.gif)
+
+### 使用
+#### 1.xml中添加组件
+```xml
+<site.starsone.xandroidutil.view.FloatingActionBtnMenu
+    android:id="@+id/fabMenu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:iconBgColor="@color/design_default_color_error"
+    app:iconColor="@color/design_default_color_secondary"
+/>
+```
+- `iconBgColor` 主按钮的背景色
+- `iconColor` 主按钮的图标色
+
+也可以通过方法`setMainBtnStyle()`修改
+
+#### 2.设置按钮组菜单项和点击监听器
+
+有2个方法来快速构建子项
+- `buildItemsByMenuData()` 通过menu菜单资源
+- `buildItemsByListData()` 通过list数据
+
+**使用buildItemsByMenuData方法:**
+
+> 需要定义个mymenu.xml的菜单文件
+
+```kotlin
+val fabMenu = findViewById<FloatingActionBtnMenu>(R.id.fabMenu)
+val list = listOf(
+    FloatingActionBtnMenu.MenuItemData("", R.drawable.ic_baseline_adb_24),
+    FloatingActionBtnMenu.MenuItemData(
+        "sec", R.drawable.ic_baseline_adb_24,
+        FloatingActionBtnMenu.MenuItemStyle()
+    )
+)
+
+fabMenu.buildItemsByMenuData(R.menu.mymenu) {
+    //按钮的点击监听器
+    when (it) {
+        R.id.menuFirst -> {
+            ToastUtils.showShort("点击了first")
+        }
+        R.id.menuSec -> {
+            ToastUtils.showShort("点击了sec")
+        }
+    }
+}
+```
+
+**使用buildItemsByListData方法:**
+
+
+```kotlin
+val fabMenu = findViewById<FloatingActionBtnMenu>(R.id.fabMenu)
+val list = listOf(
+    FloatingActionBtnMenu.MenuItemData("", R.drawable.ic_baseline_adb_24),
+    FloatingActionBtnMenu.MenuItemData(
+        "sec", R.drawable.ic_baseline_adb_24,
+        FloatingActionBtnMenu.MenuItemStyle()
+    )
+)
+fabMenu.buildItemsByListData(list) {
+    when (it) {
+        0 -> ToastUtils.showShort("点击了first")
+        1 -> ToastUtils.showShort("点击了sec")
+    }
+}
+```
+## 样式修改
+
+样式数据实体类为MenuItemStyle,解释如下:
+
+```kotlin
+/**
+ * @param textColor 左侧文本颜色
+ * @param textBgColor 左侧文本背景色
+ * @param iconColor 右侧图标颜色
+ * @param iconBgColor 右侧图标背景色
+ */
+data class MenuItemStyle(
+    @ColorInt val textColor: Int = ColorUtils.getColor(R.color.black),
+    @ColorInt val textBgColor: Int = ColorUtils.getColor(R.color.white),
+    @ColorInt val iconColor: Int = ColorUtils.getColor(R.color.white),
+    @ColorInt val iconBgColor: Int = ColorUtils.getColor(R.color.purple_700)
+)
+```
+
+使用`buildItemsByMenuData()`方法来构建的话,可以使用第二个参数,接收一个List<MenuItemStyle>来设置每个item的样式颜色,**注意要和menu资源文件的item项数要保持一致!**
+
+而使用`buildItemsByListData()`方法来构建的话,FloatingActionBtnMenu.MenuItemData实体类里的第三个参数可附加样式
