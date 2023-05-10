@@ -120,7 +120,7 @@ class FloatingActionMenu @JvmOverloads constructor(
         mAddButton.setImageDrawable(
             ContextCompat.getDrawable(
                 context,
-                R.drawable.ic_baseline_add_24
+                R.drawable.x_fab_add
             )
         )
         addView(mAddButton)
