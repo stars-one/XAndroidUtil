@@ -302,10 +302,10 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
     )
 
     /**
-     * @param textColor
-     * @param textBgColor
-     * @param iconColor
-     * @param iconBgColor
+     * @param textColor 左侧文本颜色
+     * @param textBgColor 左侧文本背景色
+     * @param iconColor 右侧图标颜色
+     * @param iconBgColor 右侧图标背景色
      */
     data class MenuItemStyle(
         @ColorInt val textColor: Int = ColorUtils.getColor(R.color.black),
