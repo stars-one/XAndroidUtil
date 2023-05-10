@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         val fabMenu = findViewById<FloatingActionBtnMenu>(R.id.fabMenu)
 
         //使用menu构造子项列表
-        /*fabMenu.buildItemsByMenuData(R.menu.mymenu_jj) {
+        /*fabMenu.buildItemsByMenuData(R.menu.mymenu) {
             when (it) {
                 R.id.menuFirst -> {
                     ToastUtils.showShort("点击了first")
