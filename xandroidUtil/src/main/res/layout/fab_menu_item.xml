@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginEnd="16dp"
-        android:elevation="8dp"
+        app:cardElevation="4dp"
         app:cardCornerRadius="8dp">
 
         <TextView
@@ -34,8 +34,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         app:backgroundTint="@color/purple_200"
-        app:elevation="8dp"
+        app:elevation="4dp"
+        android:layout_marginVertical="4dp"
+        android:elevation="0dp"
         app:fabSize="mini"
-        tools:src="@drawable/ic_baseline_adb_24" />
+        tools:src="@drawable/x_fab_add" />
 
 </LinearLayout>

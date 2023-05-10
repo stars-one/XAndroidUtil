@@ -10,6 +10,8 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -19,6 +21,7 @@ import androidx.annotation.MenuRes
 import androidx.appcompat.widget.PopupMenu
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.core.view.children
 import com.blankj.utilcode.util.ColorUtils
 import com.blankj.utilcode.util.ConvertUtils
@@ -55,7 +58,7 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
     /**
      * 主按钮的收缩动画
      */
-    private val collapseAnim by lazy {
+    private val mainBtnCollapseAnim by lazy {
         val animator = ObjectAnimator.ofFloat(mAddButton, "rotation", 45f, 0f)
         animator.interpolator = AnticipateOvershootInterpolator()
         animator.duration = 200 // 动画时长（单位：毫秒）
@@ -75,7 +78,7 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
     /**
      * 主按钮的展开动画
      */
-    private val expandedAnim by lazy {
+    private val mainBtnExpandAnim by lazy {
         val animator = ObjectAnimator.ofFloat(mAddButton, "rotation", 0f, 45f)
         animator.interpolator = AnticipateOvershootInterpolator()
         animator.duration = 200 // 动画时长（单位：毫秒）
@@ -95,28 +98,85 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
     // 切换展开/关闭状态
     fun toggle() {
         if (mExpanded) {
-            collapseAnim.start()
+            mainBtnCollapseAnim.start()
         } else {
-            expandedAnim.start()
+            mainBtnExpandAnim.start()
         }
     }
 
     // 展开悬浮菜单
     fun expand() {
         mExpanded = true
+
+        //展开的动画
+        llFabMenuItems.visibility = View.VISIBLE
+        ViewCompat.animate(llFabMenuItems).cancel()
+        val boxExpandedAnim = AnimationUtils.loadAnimation(context, R.anim.sd_fade_and_translate_in)
+        boxExpandedAnim.setStartOffset(10)
+        llFabMenuItems.startAnimation(boxExpandedAnim)
+
         //显示所有子按钮
         mButtons.forEach {
             it.visibility = View.VISIBLE
+
+            ViewCompat.animate(it).cancel()
+            val boxExpandedAnim =
+                AnimationUtils.loadAnimation(context, R.anim.sd_scale_fade_and_translate_in)
+            boxExpandedAnim.setStartOffset(10)
+            it.startAnimation(boxExpandedAnim)
         }
+
 
     }
 
     // 关闭悬浮菜单
     fun collapse() {
         mExpanded = false
+
+        ViewCompat.animate(llFabMenuItems).cancel()
+        val boxCollapseAnim =
+            AnimationUtils.loadAnimation(context, R.anim.sd_fade_and_translate_out)
+        boxCollapseAnim.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationRepeat(animation: Animation?) {
+
+            }
+
+            override fun onAnimationEnd(animation: Animation?) {
+                llFabMenuItems.visibility = View.GONE
+            }
+
+            override fun onAnimationStart(animation: Animation?) {
+
+            }
+
+        })
+
+        //隐藏所有子按钮
         mButtons.forEach {
-            it.visibility = View.GONE
+
+            ViewCompat.animate(it).cancel()
+            val boxExpandedAnim =
+                AnimationUtils.loadAnimation(context, R.anim.sd_scale_fade_and_translate_out)
+            boxExpandedAnim.setStartOffset(10)
+            boxExpandedAnim.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(animation: Animation?) {
+
+                }
+
+                override fun onAnimationEnd(animation: Animation?) {
+                    it.visibility = View.INVISIBLE
+                }
+
+                override fun onAnimationStart(animation: Animation?) {
+
+                }
+
+            })
+            it.startAnimation(boxExpandedAnim)
         }
+
+        llFabMenuItems.startAnimation(boxCollapseAnim)
+
     }
 
     init {
@@ -136,6 +196,7 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
         }
 
         llFabMenuItems.gravity = Gravity.END
+
 
         // 设置添加按钮的属性
         mAddButton = FloatingActionButton(context!!)
