@@ -42,17 +42,74 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
 
     private val llFabMenuItems = LinearLayout(getContext())
 
+    init {
+
+
+        this.orientation = VERTICAL
+        this.gravity = Gravity.END or Gravity.BOTTOM
+        layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+
+        //设置放置按钮组的布局
+        llFabMenuItems.orientation = VERTICAL
+        llFabMenuItems.layoutParams = LayoutParams(
+            LayoutParams.MATCH_PARENT,
+            LayoutParams.WRAP_CONTENT
+        ).apply {
+            setMargins(0, 0, ConvertUtils.dp2px(16f), ConvertUtils.dp2px(16f))
+        }
+
+        llFabMenuItems.gravity = Gravity.END
+
+
+        // 设置添加按钮的属性
+        mAddButton = FloatingActionButton(context!!)
+        mAddButton.compatElevation = ConvertUtils.dp2px(16f).toFloat()
+        mAddButton.setImageDrawable(
+            ContextCompat.getDrawable(
+                context,
+                R.drawable.x_fab_add
+            )
+        )
+        // 创建 LayoutParams 对象
+        val layoutParams =
+            LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        // 设置 Margin
+        layoutParams.setMargins(0, 0, ConvertUtils.dp2px(16f), ConvertUtils.dp2px(16f))
+        mAddButton.layoutParams = layoutParams
+        addView(mAddButton)
+
+        // 监听添加按钮的点击事件
+        mAddButton.setOnClickListener { toggle() }
+
+        //按钮组放在前面
+        addView(llFabMenuItems, 0)
+
+
+        //读取xml中的属性
+        val typearr = context.obtainStyledAttributes(attrs, R.styleable.FloatingActionBtnMenu)
+
+        val iconBgColor = typearr.getColor(
+            R.styleable.FloatingActionBtnMenu_iconBgColor,
+            ColorUtils.getColor(R.color.purple_700)
+        )
+
+        val iconColor = typearr.getColor(
+            R.styleable.FloatingActionBtnMenu_iconColor,
+            ColorUtils.getColor(R.color.white)
+        )
+        typearr.recycle()
+
+        setMainBtnStyle(iconColor, iconBgColor)
+    }
+
     // 添加悬浮按钮到容器内
-    fun addFloatingActionButton(button: View) {
+    private fun addFloatingActionButton(button: View) {
         mButtons.add(button)
         button.visibility = View.GONE
         llFabMenuItems.addView(button)
-    }
-
-    // 删除悬浮按钮从容器内
-    fun removeFloatingActionButton(button: View) {
-        mButtons.remove(button)
-        llFabMenuItems.removeView(button)
     }
 
     /**
@@ -179,68 +236,7 @@ class FloatingActionBtnMenu @JvmOverloads constructor(
 
     }
 
-    init {
 
-
-        this.orientation = VERTICAL
-        this.gravity = Gravity.END or Gravity.BOTTOM
-        layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
-
-        //设置放置按钮组的布局
-        llFabMenuItems.orientation = VERTICAL
-        llFabMenuItems.layoutParams = LayoutParams(
-            LayoutParams.MATCH_PARENT,
-            LayoutParams.WRAP_CONTENT
-        ).apply {
-            setMargins(0, 0, ConvertUtils.dp2px(16f), ConvertUtils.dp2px(16f))
-        }
-
-        llFabMenuItems.gravity = Gravity.END
-
-
-        // 设置添加按钮的属性
-        mAddButton = FloatingActionButton(context!!)
-        mAddButton.compatElevation = ConvertUtils.dp2px(16f).toFloat()
-        mAddButton.setImageDrawable(
-            ContextCompat.getDrawable(
-                context,
-                R.drawable.x_fab_add
-            )
-        )
-        // 创建 LayoutParams 对象
-        val layoutParams =
-            LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
-        // 设置 Margin
-        layoutParams.setMargins(0, 0, ConvertUtils.dp2px(16f), ConvertUtils.dp2px(16f))
-        mAddButton.layoutParams = layoutParams
-        addView(mAddButton)
-
-        // 监听添加按钮的点击事件
-        mAddButton.setOnClickListener { toggle() }
-
-        //按钮组放在前面
-        addView(llFabMenuItems, 0)
-
-
-        //读取xml中的属性
-        val typearr = context.obtainStyledAttributes(attrs, R.styleable.FloatingActionBtnMenu)
-
-        val iconBgColor = typearr.getColor(
-            R.styleable.FloatingActionBtnMenu_iconBgColor,
-            ColorUtils.getColor(R.color.purple_700)
-        )
-
-        val iconColor = typearr.getColor(
-            R.styleable.FloatingActionBtnMenu_iconColor,
-            ColorUtils.getColor(R.color.white)
-        )
-        typearr.recycle()
-
-        setMainBtnStyle(iconColor, iconBgColor)
-    }
 
     /**
      * 设置主按钮的样式
