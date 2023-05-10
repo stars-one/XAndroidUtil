@@ -1,55 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <site.starsone.xandroidutil.view.RemixIconTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        app:iconName="arrow-up-double-line" />
 
-    <TextView
-        android:id="@+id/tvUserName"
-        android:textSize="20sp"
+    <LinearLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <site.starsone.xandroidutil.view.RemixIconTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            app:iconName="arrow-up-double-line" />
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnGoNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跳转下个页面" />
+
+        <Button
+            android:id="@+id/btnGotoLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进入日志查看页面" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@color/black" />
+
+            <site.starsone.xandroidutil.view.SlantedTextView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:gravity="center"
+                app:slantedBackgroundColor="@color/design_default_color_primary"
+                app:slantedLength="40dp"
+                app:slantedMode="left"
+                app:slantedText="付费"
+                app:slantedTextColor="@color/white"
+                app:slantedTextSize="16sp" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/btnGoNext"
-        android:text="跳转下个页面"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <site.starsone.xandroidutil.view.FloatingActionBtnMenu
+        android:id="@+id/fabMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:iconBgColor="@color/design_default_color_error"
+        app:iconColor="@color/design_default_color_secondary"
+        />
 
-    <Button
-        android:id="@+id/btnGotoLog"
-        android:text="进入日志查看页面"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="@color/black"/>
-        <site.starsone.xandroidutil.view.SlantedTextView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:gravity="center"
-            app:slantedBackgroundColor="@color/design_default_color_primary"
-            app:slantedLength="40dp"
-            app:slantedMode="left"
-            app:slantedText="付费"
-            app:slantedTextColor="@color/white"
-            app:slantedTextSize="16sp"
-            />
-    </FrameLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
