@@ -1,9 +1,12 @@
 package site.starsone.xandroidutil.util
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.ToastUtils
+import com.blankj.utilcode.util.UriUtils
+import java.io.File
 
 object XActivityUtil {
     /**
@@ -24,4 +27,29 @@ object XActivityUtil {
             }
         }
     }
+
+    /**
+     * 打开文件
+     */
+    fun openFile(file: File?) {
+        file?.let {
+            val intent = Intent()
+            intent.action = Intent.ACTION_VIEW
+            val type = file.getMimeType()
+
+            val uri = UriUtils.file2Uri(file)
+            if (type != null) {
+                intent.setDataAndType(uri, type)
+            } else {
+                intent.data = uri
+            }
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_ACTIVITY_NEW_TASK)
+            try {
+                ActivityUtils.startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                ToastUtils.showShort("抱歉,当前设备未找到能打开pdf文件的APP!")
+            }
+        }
+    }
+
 }
