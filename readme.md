@@ -287,3 +287,57 @@ fabMenu.setMainBtnClickListener{
     //点击操作...
 }
 ```
+
+## 10.设置项组件
+
+可自动保存设置项数值的组件,无需关注保存和读取逻辑
+
+### 1.SettingItemRadioGroup 单选按钮设置项
+
+![](https://img2023.cnblogs.com/blog/1210268/202305/1210268-20230512135421564-801072668.png)
+
+支持GlobalData的Int和String类型
+```xml
+<site.starsone.xandroidutil.view.SettingItemRadioGroup
+    android:id="@+id/sirb"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:tip="提示说明"
+    app:text="下载模式"/>
+```
+
+```kotlin
+object MyGlobalData {
+    val mode = GlobalDataConfig("mymode", 1)
+}
+
+val sItemRb = findViewById<SettingItemRadioGroup>(R.id.sirb)
+sItemRb.setData(SettingItemRadioGroupDataInt(listOf(
+    Pair(1,"模式1"),
+    Pair(2,"模式2"),"下载模式","提示文本"
+),MyGlobalData.mode))
+```
+
+- `setRbOrientation()` 设置排列方向
+
+### 2.SettingItemSwitch 开关设置项
+
+![](https://img2023.cnblogs.com/blog/1210268/202305/1210268-20230512144010188-1976392548.png)
+
+```xml
+<site.starsone.xandroidutil.view.SettingItemSwitch
+    android:id="@+id/siSwtich"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:tip="提示说明"
+    app:text="测试开关"/>
+```
+
+```kotlin
+object MyGlobalData {
+    val openFlag = GlobalDataConfig("openFlag", true)
+}
+
+val siSwtich = findViewById<SettingItemSwitch>(R.id.siSwtich)
+siSwtich.setData(SettingItemSwitchData(MyGlobalData.openFlag))
+```
