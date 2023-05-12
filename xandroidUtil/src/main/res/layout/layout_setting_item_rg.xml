@@ -20,8 +20,8 @@
         android:id="@+id/ivTip"
         android:background="@drawable/ripple_contact_circle"
         app:layout_constraintStart_toEndOf="@id/tvTip"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvTip"
+        app:layout_constraintBottom_toBottomOf="@id/tvTip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
@@ -29,9 +29,8 @@
 
     <RadioGroup
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivTip"
         android:orientation="horizontal"
         android:id="@+id/rgOutputType"
         android:layout_width="wrap_content"
