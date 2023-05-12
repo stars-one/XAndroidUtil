@@ -58,6 +58,14 @@
                 app:slantedTextColor="@color/white"
                 app:slantedTextSize="16sp" />
         </FrameLayout>
+
+        <site.starsone.xandroidutil.view.SettingItemRadioGroup
+            android:id="@+id/sirb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tip="提示说明"
+            app:text="下载模式"
+            />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

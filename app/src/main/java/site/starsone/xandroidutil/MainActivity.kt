@@ -9,6 +9,8 @@ import com.blankj.utilcode.util.ToastUtils
 import com.hjq.logcat.LogcatActivity
 import site.starsone.xandroidutil.util.GlobalDataConfig
 import site.starsone.xandroidutil.view.FloatingActionBtnMenu
+import site.starsone.xandroidutil.view.SettingItemRadioGroup
+import site.starsone.xandroidutil.view.SettingItemRadioGroupDataString
 
 class MainActivity : AppCompatActivity() {
 
@@ -67,6 +69,21 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val sItemRb = findViewById<SettingItemRadioGroup>(R.id.sirb)
+
+        /*sItemRb.setData(SettingItemRadioGroupDataInt(listOf(
+            Pair(1,"模式1"),
+            Pair(2,"模式2")
+        ),MyGlobalData.mode))*/
+
+        sItemRb.setRbOrientation(2)
+        sItemRb.setData(
+            SettingItemRadioGroupDataString(listOf(
+            Pair("mode1","模式1"),
+            Pair("mode2","模式2")
+        ),MyGlobalData.modeStr)
+        )
+
 //        repeat(2) {
 //            val fab = FloatingActionButton(this)
 //            fab.setImageResource(R.drawable.ic_baseline_adb_24)
@@ -85,4 +102,6 @@ class MainActivity : AppCompatActivity() {
 
 object MyGlobalData {
     val config = GlobalDataConfig("name", "")
+    val mode = GlobalDataConfig("mymode", 1)
+    val modeStr = GlobalDataConfig("mymodestr", "mode1")
 }
