@@ -1,7 +1,9 @@
 package site.starsone.xandroidutil.util
 
+import android.webkit.MimeTypeMap
 import com.google.gson.Gson
 import com.google.gson.internal.`$Gson$Types`
+import java.io.File
 import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
@@ -91,4 +93,16 @@ inline fun <reified T> String.parseJsonToObject(): T {
     val gson = Gson()
     val result = gson.fromJson(this, T::class.java)
     return result
+}
+
+/**
+ * 获取文件的mimeType
+ */
+fun File.getMimeType(): String {
+    val file = this
+    if (file == null) {
+        return ""
+    }
+    val extension = file.extension
+    return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension) ?: ""
 }
