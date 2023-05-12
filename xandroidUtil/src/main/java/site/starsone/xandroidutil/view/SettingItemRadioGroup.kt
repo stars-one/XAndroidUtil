@@ -30,10 +30,9 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
         rg = view.findViewById(R.id.rgOutputType)
 
         context?.apply {
-            val ta = obtainStyledAttributes(attrs, R.styleable.SettingItemRadioGroup)
-            title =
-                ta.getString(R.styleable.SettingItemRadioGroup_text) ?: ""
-            desc = ta.getString(R.styleable.SettingItemRadioGroup_tip) ?: ""
+            val ta = obtainStyledAttributes(attrs, R.styleable.SettingItem)
+            title = ta.getString(R.styleable.SettingItem_text) ?: ""
+            desc = ta.getString(R.styleable.SettingItem_tip) ?: ""
 
             refreshData()
             ta.recycle()

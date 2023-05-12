@@ -27,7 +27,7 @@
         <attr name="iconBgColor" format="color"/>
     </declare-styleable>
 
-    <declare-styleable name="SettingItemRadioGroup">
+    <declare-styleable name="SettingItem">
         <attr name="text" format="string"/>
         <attr name="tip" format="string"/>
     </declare-styleable>

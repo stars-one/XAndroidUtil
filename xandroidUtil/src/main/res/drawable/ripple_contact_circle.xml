@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:color="#9e9e9e"
+    android:color="@color/gray"
     tools:targetApi="lollipop">
     <!--上面的是涟漪（水波纹）的颜色-->
     <!--下面的则是背景色-->
