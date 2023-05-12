@@ -47,7 +47,7 @@ object XActivityUtil {
             try {
                 ActivityUtils.startActivity(intent)
             } catch (e: ActivityNotFoundException) {
-                ToastUtils.showShort("抱歉,当前设备未找到能打开pdf文件的APP!")
+                ToastUtils.showShort("抱歉,当前设备未找到能打开${file.extension}文件的APP!")
             }
         }
     }
