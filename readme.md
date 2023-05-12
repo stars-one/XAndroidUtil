@@ -169,10 +169,12 @@ startActivity(LogcatActivity::class.java)
 - `Double.toFix` double保留几位小数
 - `String.parseJsonToList` json字符串转List对象
 - `String.parseJsonToObject` json字符串转Object对象
+- `File.getMimeType` 获取文件的mimeType
 
 ## 8.XActivityUtil
 
 - `joinQqGroup()` 跳转qq的加入群的页面方法,需要传个qq群号
+- `openFile()` 打开文件
 
 
 ## 9.FloatingActionBtnMenu 悬浮按钮组菜单
