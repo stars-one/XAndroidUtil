@@ -41,6 +41,8 @@ dependencies {
 
     //Android工具类 https://github.com/Blankj/AndroidUtilCode
     api 'com.blankj:utilcodex:1.31.1'
+    def dialogx_version = "0.0.48.beta27"
+    implementation "com.github.kongzue.DialogX:DialogX:${dialogx_version}"
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'org.apache.commons:commons-text:1.9'
     implementation project(":xlogLibrary")
