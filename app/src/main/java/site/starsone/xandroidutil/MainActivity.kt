@@ -8,9 +8,7 @@ import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.hjq.logcat.LogcatActivity
 import site.starsone.xandroidutil.util.GlobalDataConfig
-import site.starsone.xandroidutil.view.FloatingActionBtnMenu
-import site.starsone.xandroidutil.view.SettingItemRadioGroup
-import site.starsone.xandroidutil.view.SettingItemRadioGroupDataString
+import site.starsone.xandroidutil.view.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -84,6 +82,9 @@ class MainActivity : AppCompatActivity() {
         ),MyGlobalData.modeStr)
         )
 
+        val siSwtich = findViewById<SettingItemSwitch>(R.id.siSwtich)
+        siSwtich.setData(SettingItemSwitchData(MyGlobalData.openFlag))
+
 //        repeat(2) {
 //            val fab = FloatingActionButton(this)
 //            fab.setImageResource(R.drawable.ic_baseline_adb_24)
@@ -104,4 +105,5 @@ object MyGlobalData {
     val config = GlobalDataConfig("name", "")
     val mode = GlobalDataConfig("mymode", 1)
     val modeStr = GlobalDataConfig("mymodestr", "mode1")
+    val openFlag = GlobalDataConfig("openFlag", true)
 }

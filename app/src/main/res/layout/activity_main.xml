@@ -66,6 +66,13 @@
             app:tip="提示说明"
             app:text="下载模式"
             />
+        <site.starsone.xandroidutil.view.SettingItemSwitch
+            android:id="@+id/siSwtich"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tip="提示说明"
+            app:text="测试开关"
+            />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
