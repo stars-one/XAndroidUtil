@@ -4,10 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import com.kongzue.dialogx.dialogs.MessageDialog
 import site.starsone.xandroidutil.R
 import site.starsone.xandroidutil.util.GlobalDataConfig
@@ -23,7 +20,7 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
 
     private var ivTip: RemixIconTextView
     private var tvTip: TextView
-    private var rg: RadioGroup
+    var rg: RadioGroup
 
     init {
         val view = View.inflate(context, R.layout.layout_setting_item_rg, this)
@@ -52,6 +49,18 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
             ivTip.visibility = View.INVISIBLE
         }
         invalidate()
+    }
+
+    /**
+     * 设置radiogroup的排列方式
+     * @param type 1:水平排列 2:垂直排列
+     */
+    fun setRbOrientation(type: Int) {
+        if (type == 1) {
+            rg.orientation = LinearLayout.HORIZONTAL
+        } else {
+            rg.orientation = LinearLayout.VERTICAL
+        }
     }
 
     /**
@@ -96,8 +105,13 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
      * 设置数据,选项是string类型的
      */
     fun setData(data: SettingItemRadioGroupDataString) {
-        this.title = data.title
-        this.desc = data.tip
+        //忽略空数据
+        if (data.tip.isNotBlank()) {
+            this.desc = data.tip
+        }
+        if (data.title.isNotBlank()) {
+            this.title = data.title
+        }
         refreshData()
 
         val currentSelectIndex = data.globalData.currentValue
@@ -105,9 +119,9 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
 
         //创建radiobutton
 
-        val rbList = list.map {
+        val rbList = list.mapIndexed { index, it ->
             RadioButton(context).apply {
-                id = it.first
+                id = index
                 tag = it.first
                 text = it.second
                 isChecked = tag == currentSelectIndex
@@ -135,7 +149,7 @@ data class SettingItemRadioGroupDataInt(
 )
 
 data class SettingItemRadioGroupDataString(
-    val list: List<Pair<Int, String>>,
+    val list: List<Pair<String, String>>,
     val globalData: GlobalDataConfig<String>,
     val title: String = "",
     val tip: String = ""
