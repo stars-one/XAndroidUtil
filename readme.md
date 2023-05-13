@@ -6,6 +6,36 @@
 
 封装自己常用的一些Android的组件或工具
 
+## 目录
+* [Android工具库](#android工具库)
+  * [依赖](#依赖)
+  * [全局配置工具类](#全局配置工具类)
+    * [1.新建常量池](#1新建常量池)
+    * [2.配置配置项](#2配置配置项)
+    * [3.使用](#3使用)
+  * [2.Remix图标](#2remix图标)
+  * [3.工具类方法](#3工具类方法)
+  * [4.主题样式](#4主题样式)
+  * [5.SlantedTextView](#5slantedtextview)
+    * [xml使用](#xml使用)
+    * [Java使用](#java使用)
+    * [属性说明](#属性说明)
+    * [SlantedMode模式可选项](#slantedmode模式可选项)
+  * [6.日志查看功能](#6日志查看功能)
+  * [7.扩展方法](#7扩展方法)
+  * [8.XActivityUtil](#8xactivityutil)
+  * [9.FloatingActionBtnMenu 悬浮按钮组菜单](#9floatingactionbtnmenu-悬浮按钮组菜单)
+    * [效果](#效果)
+    * [使用](#使用)
+      * [1.xml中添加组件](#1xml中添加组件)
+      * [2.设置按钮组菜单项和点击监听器](#2设置按钮组菜单项和点击监听器)
+    * [样式修改](#样式修改)
+    * [单独使用](#单独使用)
+  * [10.设置项组件](#10设置项组件)
+    * [1.SettingItemRadioGroup 单选按钮设置项](#1settingitemradiogroup-单选按钮设置项)
+    * [2.SettingItemSwitch 开关设置项](#2settingitemswitch-开关设置项)
+  * [11.BadgeObservableData 小红点封装类](#11badgeobservabledata-小红点封装类)
+
 ## 依赖
 
 需要先引用JitPack仓库源
