@@ -387,7 +387,7 @@ badgeObservableData.data = 20
 
 `toBadgeObservableData(zeroHide)` 是一个扩展方法
 
-提供了个`zeroHide`参数,如果为false的话,当小红点上的数值为0,则会有下面的效果(已下载那个菜单);为true的话,则是直接隐藏小红点的显示
+提供了个`zeroHide`参数,如果为false的话,当小红点上的数值为0,则会有下面的效果(下载中那个菜单);为true的话,则是直接隐藏小红点的显示
 
 ![](https://img2023.cnblogs.com/blog/1210268/202305/1210268-20230514011136780-1506912908.png)
 
