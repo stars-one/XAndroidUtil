@@ -341,3 +341,23 @@ object MyGlobalData {
 val siSwtich = findViewById<SettingItemSwitch>(R.id.siSwtich)
 siSwtich.setData(SettingItemSwitchData(MyGlobalData.openFlag))
 ```
+## 11.BadgeObservableData 小红点封装类
+
+与`com.google.android.material.bottomnavigation.BottomNavigationView`联用,方便更新小红点数据
+
+```kotlin
+//从底部导航栏得到小红点组件对象
+val badgeDrawable = bottomNav.getOrCreateBadge(R.menu.menuAdd)
+//将小红点组件对象转为我们的实体类
+val badgeObservableData = badgeDrawable.toBadgeObservableData()
+
+//更新小红点的数量,会自动更新数据,且包含了主线程切换操作
+badgeObservableData.data = 20
+```
+
+`toBadgeObservableData(zeroHide)` 是一个扩展方法
+
+提供了个`zeroHide`参数,如果为false的话,当小红点上的数值为0,则会有下面的效果(已下载那个菜单);为true的话,则是直接隐藏小红点的显示
+
+![](https://img2023.cnblogs.com/blog/1210268/202305/1210268-20230514011136780-1506912908.png)
+
