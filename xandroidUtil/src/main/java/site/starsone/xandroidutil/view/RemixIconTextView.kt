@@ -17,21 +17,25 @@ class RemixIconTextView : TextView {
     val androidTextSize = intArrayOf(android.R.attr.textSize)
 
     private val iconfont: Typeface by lazy {
-        //初始化读取图标库数据
-        val inputStream = context.resources.assets.open(RemixIconData.jsonPath)
-        val json = inputStream.bufferedReader().readText()
-        RemixIconData.init(json)
+        if (RemixIconData.iconfont == null) {
+            //初始化读取图标库数据
+            val inputStream = context.resources.assets.open(RemixIconData.jsonPath)
+            val json = inputStream.bufferedReader().readText()
+            RemixIconData.init(json)
 
-        //读取图标字体
-        val iconFont = TypefaceCompat.createFromResourcesFontFile(
-            context,
-            context.resources,
-            R.font.remixicon,
-            "",
-            0
-        )
+            //读取图标字体
+            val iconFont = TypefaceCompat.createFromResourcesFontFile(
+                context,
+                context.resources,
+                R.font.remixicon,
+                "",
+                0
+            )
+            RemixIconData.iconfont =
+                iconFont ?: Typeface.createFromAsset(context.assets, RemixIconData.fontPath)
+        }
 
-        iconFont ?: Typeface.createFromAsset(context.assets, RemixIconData.fontPath)
+        RemixIconData.iconfont!!
     }
 
     var iconName: String = ""
@@ -84,5 +88,7 @@ object RemixIconData {
             }
         }
     }
+
+    var iconfont: Typeface? = null
 
 }
