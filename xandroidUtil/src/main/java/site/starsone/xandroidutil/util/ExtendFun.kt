@@ -1,9 +1,12 @@
 package site.starsone.xandroidutil.util
 
+import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Build
 import android.webkit.MimeTypeMap
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
 import com.google.gson.Gson
 import com.google.gson.internal.`$Gson$Types`
 import java.io.File
@@ -44,7 +47,7 @@ fun Long.toUnitString(): String {
  *
  * @param maxLength 最大位数
  */
-fun Int.fillZero(maxLength:Int):String{
+fun Int.fillZero(maxLength: Int): String {
     return String.format("%0${maxLength}d", this)
 }
 
@@ -57,7 +60,7 @@ fun Int.fillZero(maxLength:Int):String{
  *
  * @param maxLength 最大位数
  */
-fun Long.fillZero(maxLength:Int):String{
+fun Long.fillZero(maxLength: Int): String {
     return String.format("%0${maxLength}d", this)
 }
 
@@ -67,7 +70,7 @@ fun Long.fillZero(maxLength:Int):String{
  * @param num
  * @return
  */
-fun Double.toFix(num: Int=2):Double{
+fun Double.toFix(num: Int = 2): Double {
     val one = this
     val two = BigDecimal(one)
     return two.setScale(num, BigDecimal.ROUND_HALF_UP).toDouble()
@@ -111,7 +114,7 @@ fun File.getMimeType(): String {
 }
 
 /**
- * 获取不同状态的drawable,
+ * 获取selector某个状态的drawable
  * - selector里定义`androird:state_pressed="true"`,即为`android.R.attr.state_pressed`
  * - selector里定义`androird:state_pressed="false"`,即为`-android.R.attr.state_pressed`
  *
@@ -125,8 +128,8 @@ fun File.getMimeType(): String {
 - [android.R.attr.state_activated]：用于用作活动项目的视图。
  *
  */
-fun StateListDrawable.getStateDrawable(flag: Int): Drawable {
-    val icon =this
+fun StateListDrawable.getXStateDrawable(@AttrRes flag: Int): Drawable {
+    val icon = this
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
         val index = icon.findStateDrawableIndex(intArrayOf(flag))
         icon.getStateDrawable(index)!!
@@ -134,4 +137,24 @@ fun StateListDrawable.getStateDrawable(flag: Int): Drawable {
         icon.state = IntArray(android.R.attr.state_checked)
         icon.current
     }
+}
+
+/**
+ * 获取selector某个状态的color
+ * - selector里定义`androird:state_pressed="true"`,即为`android.R.attr.state_pressed`
+ * - selector里定义`androird:state_pressed="false"`,即为`-android.R.attr.state_pressed`
+ *
+ * @param flag 可选数值如下: 前面加个`-`,标示为状态为false
+- [android.R.attr.state_pressed]：按钮被按下时的状态。
+- [android.R.attr.state_focused]：视图获取焦点时的状态。
+- [android.R.attr.state_selected]：视图被选中时的状态。
+- [android.R.attr.state_checked]：用于可选中的视图，表示视图处于选中状态。
+- [android.R.attr.state_enabled]：视图可用时的状态。
+- [android.R.attr.state_hovered]：视图被悬停时的状态。
+- [android.R.attr.state_activated]：用于用作活动项目的视图。
+ *
+ */
+fun ColorStateList.getColorForState(@AttrRes flag: Int, @ColorInt defaultColor: Int): Int {
+    val array = intArrayOf(flag)
+    return getColorForState(array, defaultColor)
 }
