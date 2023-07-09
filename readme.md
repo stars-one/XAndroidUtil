@@ -200,6 +200,7 @@ startActivity(LogcatActivity::class.java)
 - `String.parseJsonToList` json字符串转List对象
 - `String.parseJsonToObject` json字符串转Object对象
 - `File.getMimeType` 获取文件的mimeType
+- `StateListDrawable.getStateDrawable` 获取selector中不同状态的drawble对象
 
 ## 8.XActivityUtil
 
