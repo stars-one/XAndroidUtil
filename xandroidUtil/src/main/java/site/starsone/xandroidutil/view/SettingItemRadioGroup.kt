@@ -4,7 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.widget.*
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.RelativeLayout
+import android.widget.TextView
 import com.kongzue.dialogx.dialogs.MessageDialog
 import site.starsone.xandroidutil.R
 import site.starsone.xandroidutil.util.GlobalDataConfig
@@ -21,6 +24,7 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
     private var ivTip: RemixIconTextView
     private var tvTip: TextView
     var rg: RadioGroup
+    var rg2: RadioGroup
 
     init {
         val view = View.inflate(context, R.layout.layout_setting_item_rg, this)
@@ -28,6 +32,7 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
         ivTip = view.findViewById(R.id.ivTip)
         tvTip = view.findViewById(R.id.tvTip)
         rg = view.findViewById(R.id.rgOutputType)
+        rg2 = view.findViewById(R.id.rgOutputType2)
 
         context?.apply {
             val ta = obtainStyledAttributes(attrs, R.styleable.SettingItem)
@@ -55,10 +60,13 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
      * @param type 1:水平排列 2:垂直排列
      */
     fun setRbOrientation(type: Int) {
+
         if (type == 1) {
-            rg.orientation = LinearLayout.HORIZONTAL
+//            rg.orientation = LinearLayout.HORIZONTAL
+            rg2.visibility = View.GONE
         } else {
-            rg.orientation = LinearLayout.VERTICAL
+            rg.visibility = View.GONE
+//            rg.orientation = LinearLayout.VERTICAL
         }
     }
 
@@ -90,10 +98,17 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
         //加入radiogroup中
         rbList.forEach {
             rg.addView(it)
+            rg2.addView(it)
         }
 
         //监听数据
         rg.setOnCheckedChangeListener { _, checkedId ->
+            val rb = this.findViewById<RadioButton>(checkedId)
+            val index = rb.tag.toString().toInt()
+            data.globalData.setValue(index)
+        }
+
+        rg2.setOnCheckedChangeListener { group, checkedId ->
             val rb = this.findViewById<RadioButton>(checkedId)
             val index = rb.tag.toString().toInt()
             data.globalData.setValue(index)
@@ -129,10 +144,16 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
         //加入radiogroup中
         rbList.forEach {
             rg.addView(it)
+            rg2.addView(it)
         }
 
         //监听数据
         rg.setOnCheckedChangeListener { _, checkedId ->
+            val rb = this.findViewById<RadioButton>(checkedId)
+            val index = rb.tag.toString()
+            data.globalData.setValue(index)
+        }
+        rg2.setOnCheckedChangeListener { _, checkedId ->
             val rb = this.findViewById<RadioButton>(checkedId)
             val index = rb.tag.toString()
             data.globalData.setValue(index)
