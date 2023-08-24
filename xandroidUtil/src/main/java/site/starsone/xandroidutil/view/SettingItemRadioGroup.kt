@@ -56,17 +56,20 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
     }
 
     /**
+     * 1:水平排列 2:垂直排列
+     */
+    var arrangeType = 1
+
+    /**
      * 设置radiogroup的排列方式
      * @param type 1:水平排列 2:垂直排列
      */
     fun setRbOrientation(type: Int) {
-
+        this.arrangeType = type
         if (type == 1) {
-//            rg.orientation = LinearLayout.HORIZONTAL
             rg2.visibility = View.GONE
         } else {
             rg.visibility = View.GONE
-//            rg.orientation = LinearLayout.VERTICAL
         }
     }
 
@@ -95,20 +98,21 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
                 isChecked = tag == currentSelectIndex
             }
         }
+
+        val myrg = if (arrangeType == 1) {
+            //水平方向
+            rg
+        } else {
+            rg2
+        }
+
         //加入radiogroup中
         rbList.forEach {
-            rg.addView(it)
-            rg2.addView(it)
+            myrg.addView(it)
         }
 
         //监听数据
-        rg.setOnCheckedChangeListener { _, checkedId ->
-            val rb = this.findViewById<RadioButton>(checkedId)
-            val index = rb.tag.toString().toInt()
-            data.globalData.setValue(index)
-        }
-
-        rg2.setOnCheckedChangeListener { group, checkedId ->
+        myrg.setOnCheckedChangeListener { _, checkedId ->
             val rb = this.findViewById<RadioButton>(checkedId)
             val index = rb.tag.toString().toInt()
             data.globalData.setValue(index)
@@ -141,19 +145,21 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
                 isChecked = tag == currentSelectIndex
             }
         }
+
+        val myrg = if (arrangeType == 1) {
+            //水平方向
+            rg
+        } else {
+            rg2
+        }
+
         //加入radiogroup中
         rbList.forEach {
-            rg.addView(it)
-            rg2.addView(it)
+            myrg.addView(it)
         }
 
         //监听数据
-        rg.setOnCheckedChangeListener { _, checkedId ->
-            val rb = this.findViewById<RadioButton>(checkedId)
-            val index = rb.tag.toString()
-            data.globalData.setValue(index)
-        }
-        rg2.setOnCheckedChangeListener { _, checkedId ->
+        myrg.setOnCheckedChangeListener { _, checkedId ->
             val rb = this.findViewById<RadioButton>(checkedId)
             val index = rb.tag.toString()
             data.globalData.setValue(index)

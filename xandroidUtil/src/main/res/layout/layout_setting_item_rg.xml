@@ -36,11 +36,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <RadioGroup
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        app:layout_constraintStart_toStartOf="@id/tvTip"
         app:layout_constraintTop_toBottomOf="@id/tvTip"
         android:orientation="vertical"
         android:id="@+id/rgOutputType2"
-        android:layout_width="wrap_content"
+        android:gravity="start"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -74,12 +74,21 @@ class MainActivity : AppCompatActivity() {
             Pair(2,"模式2")
         ),MyGlobalData.mode))*/
 
-        sItemRb.setRbOrientation(2)
+        sItemRb.setRbOrientation(1)
         sItemRb.setData(
             SettingItemRadioGroupDataString(listOf(
             Pair("mode1","模式1"),
             Pair("mode2","模式2")
         ),MyGlobalData.modeStr)
+        )
+        val sItemRb2 = findViewById<SettingItemRadioGroup>(R.id.sirb2)
+
+        sItemRb2.setRbOrientation(2)
+        sItemRb2.setData(
+            SettingItemRadioGroupDataString(listOf(
+                Pair("mode1","模式1"),
+                Pair("mode2","模式2")
+            ),MyGlobalData.modeStr)
         )
 
         val siSwtich = findViewById<SettingItemSwitch>(R.id.siSwtich)
