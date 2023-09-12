@@ -109,14 +109,14 @@ class LogcatActivity : AppCompatActivity(), TextWatcher,
         )
         initFilter()
         refreshLayout()
-        
+
         val flag = SPUtils.getInstance().getBoolean("locat_has_tip",false)
         if (!flag) {
             AlertDialog.Builder(this).setTitle("使用说明").setMessage("本页面功能主要是为了方便开发者排查错误整的。\n 1.先点击上方的倒数第二个按钮(扫把)，先当前所有日志清空; \n 2.点击最右边的按钮,将当前页面最小化; 3.回到页面,重复你遇到问题的操作; \n 4.再次进入本页面,点击第二个按钮,将日志保存并分享给开发者来进行问题排查!")
                 .setPositiveButton("确定"){dilog,witch ->
                     dilog.dismiss()
                 }
-                .setPositiveButton("不再提示"){dilog,witch ->
+                .setNegativeButton("不再提示"){dilog,witch ->
                     SPUtils.getInstance().put("locat_has_tip",true)
                     dilog.dismiss()
                 }
