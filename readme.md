@@ -132,6 +132,7 @@ tvHome.iconName = "home-5-fill"
 
 - `openUrlByDefaultBrower` 使用默认浏览器打开网址
 - `openUrlByBrower` 弹窗选择浏览器打开链接
+- `showTipDialog` 显示提示框(有个不再提示的选项)
 
 ## 4.主题样式
 
