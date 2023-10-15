@@ -1,102 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<site.starsone.xandroidutil.view.SuperSlidingPaneLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sPanelLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--  注意顺序,一定是目录布局,然后再到内容  -->
 
-    <LinearLayout
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <!--  侧边栏目录布局  -->
+    <include layout="@layout/main_drawer" android:layout_width="match_parent" android:layout_height="match_parent"/>
 
-        <site.starsone.xandroidutil.view.RemixIconTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            app:iconName="arrow-up-double-line" />
+    <!-- 内容布局   -->
+    <include layout="@layout/main_content" android:layout_width="match_parent" android:layout_height="match_parent"/>
 
-        <TextView
-            android:id="@+id/tvUserName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/btnGoNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="跳转下个页面" />
-
-        <Button
-            android:id="@+id/btnGotoLog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="进入日志查看页面" />
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:background="@color/black" />
-
-            <site.starsone.xandroidutil.view.SlantedTextView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:gravity="center"
-                app:slantedBackgroundColor="@color/design_default_color_primary"
-                app:slantedLength="40dp"
-                app:slantedMode="left"
-                app:slantedText="付费"
-                app:slantedTextColor="@color/white"
-                app:slantedTextSize="16sp" />
-        </FrameLayout>
-
-        <site.starsone.xandroidutil.view.SettingItemRadioGroup
-            android:id="@+id/sirb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tip="提示说明"
-            app:text="下载模式"
-            />
-
-        <site.starsone.xandroidutil.view.SettingItemRadioGroup
-            android:id="@+id/sirb2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tip="提示说明"
-            app:text="下载模式垂直的"
-            />
-
-        <site.starsone.xandroidutil.view.SettingItemSwitch
-            android:id="@+id/siSwtich"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tip="提示说明"
-            app:text="测试开关"
-            />
-    </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <site.starsone.xandroidutil.view.FloatingActionBtnMenu
-        android:id="@+id/fabMenu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:iconBgColor="@color/design_default_color_error"
-        app:iconColor="@color/design_default_color_secondary"
-        />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</site.starsone.xandroidutil.view.SuperSlidingPaneLayout>

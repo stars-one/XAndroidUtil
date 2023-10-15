@@ -394,3 +394,31 @@ badgeObservableData.data = 20
 
 ![](https://img2023.cnblogs.com/blog/1210268/202305/1210268-20230514011136780-1506912908.png)
 
+## 12.侧滑菜单布局SuperSlidingPaneLayout
+
+复制于[jenly1314/SuperSlidingPaneLayout: SuperSlidingPaneLayout 是基于SlidingPaneLayout扩展修改，新增几种不同的侧滑效果。](https://github.com/jenly1314/SuperSlidingPaneLayout),更新为androidx版本
+
+xml布局:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<site.starsone.xandroidutil.view.SuperSlidingPaneLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sPanelLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:mode="default_"
+    app:compat_sliding="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--  注意顺序,一定是目录布局,然后再到内容  -->
+
+    <!--  侧边栏目录布局  -->
+    <include layout="@layout/main_drawer" android:layout_width="match_parent" android:layout_height="match_parent"/>
+
+    <!-- 内容布局   -->
+    <include layout="@layout/main_content" android:layout_width="match_parent" android:layout_height="match_parent"/>
+
+</site.starsone.xandroidutil.view.SuperSlidingPaneLayout>
+```

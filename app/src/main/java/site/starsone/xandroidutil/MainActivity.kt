@@ -17,6 +17,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //设置侧边布局
+        val sPalyout = findViewById<SuperSlidingPaneLayout>(R.id.sPanelLayout)
+        sPalyout.mode = SuperSlidingPaneLayout.Mode.DEFAULT
+
+        findViewById<TextView>(R.id.btnCloseSli).setOnClickListener {
+            sPalyout.closePane()
+        }
+
+        findViewById<TextView>(R.id.btnOpenSlipne).setOnClickListener {
+            sPalyout.openPane()
+        }
+
         val tvHome = findViewById<TextView>(R.id.tvUserName)
         val btnGoNext = findViewById<Button>(R.id.btnGoNext)
         val btnGotoLog = findViewById<Button>(R.id.btnGotoLog)
