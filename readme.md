@@ -424,3 +424,30 @@ xml布局:
 
 </site.starsone.xandroidutil.view.SuperSlidingPaneLayout>
 ```
+## 13.FlowLayout自定义布局
+
+参考视频[定制TagFlowLayout实现单选多选效果1_Android多种方式实现流式布局-慕课网](https://www.imooc.com/video/19656)写的一个自定义流式布局
+
+使用的示例xml:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.myapplication.view.FlowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/flowlayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:maxLines="10"
+    android:maxRows="11"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FlowLayoutTestActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_height="wrap_content"
+        android:text="helo"/>
+
+</com.example.myapplication.view.FlowLayout>
+```
+
+
