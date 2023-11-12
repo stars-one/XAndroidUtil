@@ -37,6 +37,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.core.os.ParcelableCompat;
@@ -47,7 +48,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import androidx.customview.view.AbsSavedState;
 import androidx.customview.widget.ViewDragHelper;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -82,7 +82,7 @@ import site.starsone.xandroidutil.R;
  * displaying the contents of the selected thread. Inappropriate uses of SlidingPaneLayout include
  * switching between disparate functions of your app, such as jumping from a social stream view
  * to a view of your personal profile - cases such as this should use the navigation drawer
- * pattern instead. ({@link DrawerLayout} implements this pattern.)</p>
+ * pattern instead. DrawerLayout implements this pattern.)</p>
  *
  * <p>Like {@link android.widget.LinearLayout LinearLayout}, SlidingPaneLayout supports
  * the use of the layout parameter <code>layout_weight</code> on child views to determine
