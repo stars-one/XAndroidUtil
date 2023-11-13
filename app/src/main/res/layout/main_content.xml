@@ -93,9 +93,30 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:orientation="horizontal">
+
+           <!--    正常使用,点击切换图标的选中状态    -->
            <site.starsone.xandroidutil.view.SelectImageView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               app:selectImg="@drawable/ic_baseline_adb_24_gray"
+               app:normalImg="@drawable/ic_baseline_adb_24_rose"
+               />
+
+           <!--   选中才展示图标的效果 ,使用透明色  -->
+           <site.starsone.xandroidutil.view.SelectImageView
+               android:layout_marginStart="16dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               app:selectImg="#00000000"
+               app:normalImg="@drawable/ic_baseline_adb_24_rose"
+               />
+
+            <!--       着色效果    -->
+           <site.starsone.xandroidutil.view.SelectImageView
+               android:layout_marginStart="16dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               app:selectImgTint="#03bbf3"
                app:selectImg="@drawable/ic_baseline_adb_24_gray"
                app:normalImg="@drawable/ic_baseline_adb_24_rose"
                />

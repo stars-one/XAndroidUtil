@@ -45,7 +45,9 @@
     </declare-styleable>
 
     <declare-styleable name="SelectImageView">
-        <attr name="normalImg" format="reference" />
-        <attr name="selectImg" format="reference" />
+        <attr name="normalImg" format="reference|color" />
+        <attr name="selectImg" format="reference|color" />
+        <attr name="selectImgTint" format="color" />
+        <attr name="normalImgTint" format="color" />
     </declare-styleable>
 </resources>
