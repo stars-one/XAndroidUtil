@@ -88,6 +88,20 @@
             app:tip="提示说明"
             app:text="测试开关"
             />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           <site.starsone.xandroidutil.view.SelectImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               app:selectImg="@drawable/ic_baseline_adb_24_gray"
+               app:normalImg="@drawable/ic_baseline_adb_24_rose"
+               />
+
+       </LinearLayout>
+
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

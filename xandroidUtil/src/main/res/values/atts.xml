@@ -43,4 +43,9 @@
         </attr>
         <attr name="compat_sliding" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="SelectImageView">
+        <attr name="normalImg" format="reference" />
+        <attr name="selectImg" format="reference" />
+    </declare-styleable>
 </resources>
