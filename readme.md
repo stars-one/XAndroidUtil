@@ -35,6 +35,10 @@
     * [1.SettingItemRadioGroup 单选按钮设置项](#1settingitemradiogroup-单选按钮设置项)
     * [2.SettingItemSwitch 开关设置项](#2settingitemswitch-开关设置项)
   * [11.BadgeObservableData 小红点封装类](#11badgeobservabledata-小红点封装类)
+  * [12.侧滑菜单布局SuperSlidingPaneLayout](#12侧滑菜单布局superslidingpanelayout)
+  * [13.FlowLayout自定义布局](#13flowlayout自定义布局)
+  * [14.SelectImageView组件](#14selectimageview组件)
+
 
 ## 依赖
 
@@ -450,4 +454,40 @@ xml布局:
 </com.example.myapplication.view.FlowLayout>
 ```
 
+## 14.SelectImageView组件
+
+需求来源: 项目中经常会有个根据点击从而对图片进行切换,比如勾选功能(之前的解决方法就是写个selector,然后更改imageview的isSelected属性来实现)
+
+不过还是觉得每次要创建一个selector文件比较麻烦,于是想通过直接在xml中使用2个图片来优化流程,于是就有了此组件
+
+组件里面已经包含了点击事件,使用的时候不需要再去设置,如果想要设置,也提供了个方法`setOnClick`
+
+```xml
+<!--    正常使用,点击切换图标的选中状态    -->
+<site.starsone.xandroidutil.view.SelectImageView
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   app:selectImg="@drawable/ic_baseline_adb_24_gray"
+   app:normalImg="@drawable/ic_baseline_adb_24_rose"
+   />
+
+<!--   选中才展示图标的效果 ,使用透明色  -->
+<site.starsone.xandroidutil.view.SelectImageView
+   android:layout_marginStart="16dp"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   app:selectImg="#00000000"
+   app:normalImg="@drawable/ic_baseline_adb_24_rose"
+   />
+
+<!--       着色效果    -->
+<site.starsone.xandroidutil.view.SelectImageView
+   android:layout_marginStart="16dp"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   app:selectImgTint="#03bbf3"
+   app:selectImg="@drawable/ic_baseline_adb_24_gray"
+   app:normalImg="@drawable/ic_baseline_adb_24_rose"
+   />
+```
 
