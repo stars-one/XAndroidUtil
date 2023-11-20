@@ -491,3 +491,28 @@ xml布局:
    />
 ```
 
+## 15.通用Recyclerview的item装饰ItemDecoration
+
+
+### `ItemDecorationVertical`
+
+可实现垂直线性布局中间item的分割间距效果,效果图如下
+
+![](https://img2023.cnblogs.com/blog/1210268/202311/1210268-20231120105600992-1582479830.png)
+
+```kotlin
+val itemDero = ItemDecorationVertical(12)
+mrecyclerview.addItemDecoration(itemDero)
+```
+
+### `ItemDecorationGrid`
+
+可实现网格布局item的分割间距效果,效果图如下
+
+![](https://img2023.cnblogs.com/blog/1210268/202311/1210268-20231120105656057-1153202704.png)
+
+```kotlin
+//每行3个
+val itemDero = ItemDecorationGrid(3,12) {outRect, space, position ->  }
+mrecyclerview.addItemDecoration(itemDero)
+```
