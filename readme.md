@@ -331,6 +331,8 @@ fabMenu.setMainBtnClickListener{
 
 可自动保存设置项数值的组件,无需关注保存和读取逻辑
 
+> PS: showTip属性是后续新增的,3个都可以使用
+
 ### 1.SettingItemRadioGroup 单选按钮设置项
 
 ![](https://img2023.cnblogs.com/blog/1210268/202305/1210268-20230512135421564-801072668.png)
@@ -380,6 +382,33 @@ object MyGlobalData {
 val siSwtich = findViewById<SettingItemSwitch>(R.id.siSwtich)
 siSwtich.setData(SettingItemSwitchData(MyGlobalData.openFlag))
 ```
+
+### 3.SettingItemTextInt 数字输入设置项
+
+点击整个item会弹出对话框,让用户输入数字
+
+![](https://img2023.cnblogs.com/blog/1210268/202311/1210268-20231124005433468-1905324635.png)
+
+```xml
+<site.starsone.xandroidutil.view.SettingItemTextInt
+    android:id="@+id/siText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:tip="提示说明222"
+    app:text="测试开关223"
+    app:showTip="false"
+    />
+```
+
+```kotlin
+object MyGlobalData {
+    val mode = GlobalDataConfig("openFlag", 3)
+}
+
+val siText = findViewById<SettingItemTextInt>(R.id.siText)
+siText.setData(SettingItemTextDataInt(MyGlobalData.mode,dialogTip = "输入数字,此选项重启才会生效",showTip = true))
+```
+
 ## 11.BadgeObservableData 小红点封装类
 
 与`com.google.android.material.bottomnavigation.BottomNavigationView`联用,方便更新小红点数据
