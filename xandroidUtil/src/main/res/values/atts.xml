@@ -30,6 +30,7 @@
     <declare-styleable name="SettingItem">
         <attr name="text" format="string"/>
         <attr name="tip" format="string"/>
+        <attr name="showTip" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="SuperSlidingPaneLayout">

@@ -16,6 +16,8 @@ import site.starsone.xandroidutil.util.GlobalDataConfig
 class SettingItemSwitch(context: Context?, attrs: AttributeSet?) : RelativeLayout(context, attrs) {
     var title = ""
     var desc = ""
+    var showTip = false
+
     private var open = false
 
     private var ivTip: RemixIconTextView
@@ -33,6 +35,7 @@ class SettingItemSwitch(context: Context?, attrs: AttributeSet?) : RelativeLayou
             val ta = obtainStyledAttributes(attrs, R.styleable.SettingItem)
             title = ta.getString(R.styleable.SettingItem_text) ?: ""
             desc = ta.getString(R.styleable.SettingItem_tip) ?: ""
+            showTip = ta.getBoolean(R.styleable.SettingItem_showTip,false)
 
             refreshData()
             ta.recycle()
@@ -44,6 +47,14 @@ class SettingItemSwitch(context: Context?, attrs: AttributeSet?) : RelativeLayou
         ivTip.setOnClickListener {
             MessageDialog.show("提示", desc)
         }
+
+        //是否展示提示
+        if (showTip) {
+            ivTip.visibility = View.VISIBLE
+        } else {
+            ivTip.visibility = View.GONE
+        }
+
         tvTip.text = title
         switchSetting.isChecked = open
         invalidate()
