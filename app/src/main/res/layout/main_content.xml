@@ -99,6 +99,7 @@
                 android:layout_height="wrap_content"
                 app:tip="提示说明222"
                 app:text="测试开关223"
+                app:showTip="false"
                 />
 
             <LinearLayout
