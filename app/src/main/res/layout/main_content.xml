@@ -7,123 +7,137 @@
     tools:context=".MainActivity">
 
 
-    <LinearLayout
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <site.starsone.xandroidutil.view.RemixIconTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            app:iconName="arrow-up-double-line" />
-
-        <TextView
-            android:id="@+id/tvUserName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/btnGoNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="跳转下个页面" />
-
-        <Button
-            android:id="@+id/btnGotoLog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="进入日志查看页面" />
-
-        <Button
-            android:id="@+id/btnOpenSlipne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="打开侧滑" />
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:background="@color/black" />
-
-            <site.starsone.xandroidutil.view.SlantedTextView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:gravity="center"
-                app:slantedBackgroundColor="@color/design_default_color_primary"
-                app:slantedLength="40dp"
-                app:slantedMode="left"
-                app:slantedText="付费"
-                app:slantedTextColor="@color/white"
-                app:slantedTextSize="16sp" />
-        </FrameLayout>
-
-        <site.starsone.xandroidutil.view.SettingItemRadioGroup
-            android:id="@+id/sirb"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:paddingBottom="120dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tip="提示说明"
-            app:text="下载模式"
-            />
+            android:orientation="vertical">
 
-        <site.starsone.xandroidutil.view.SettingItemRadioGroup
-            android:id="@+id/sirb2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tip="提示说明"
-            app:text="下载模式垂直的"
-            />
+            <site.starsone.xandroidutil.view.RemixIconTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                app:iconName="arrow-up-double-line" />
 
-        <site.starsone.xandroidutil.view.SettingItemSwitch
-            android:id="@+id/siSwtich"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tip="提示说明"
-            app:text="测试开关"
-            />
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnGoNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="跳转下个页面" />
 
-           <!--    正常使用,点击切换图标的选中状态    -->
-           <site.starsone.xandroidutil.view.SelectImageView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               app:selectImg="@drawable/ic_baseline_adb_24_gray"
-               app:normalImg="@drawable/ic_baseline_adb_24_rose"
-               />
+            <Button
+                android:id="@+id/btnGotoLog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="进入日志查看页面" />
 
-           <!--   选中才展示图标的效果 ,使用透明色  -->
-           <site.starsone.xandroidutil.view.SelectImageView
-               android:layout_marginStart="16dp"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               app:selectImg="#00000000"
-               app:normalImg="@drawable/ic_baseline_adb_24_rose"
-               />
+            <Button
+                android:id="@+id/btnOpenSlipne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="打开侧滑" />
 
-            <!--       着色效果    -->
-           <site.starsone.xandroidutil.view.SelectImageView
-               android:layout_marginStart="16dp"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               app:selectImgTint="#03bbf3"
-               app:selectImg="@drawable/ic_baseline_adb_24_gray"
-               app:normalImg="@drawable/ic_baseline_adb_24_rose"
-               />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-       </LinearLayout>
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@color/black" />
 
-    </LinearLayout>
+                <site.starsone.xandroidutil.view.SlantedTextView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    app:slantedBackgroundColor="@color/design_default_color_primary"
+                    app:slantedLength="40dp"
+                    app:slantedMode="left"
+                    app:slantedText="付费"
+                    app:slantedTextColor="@color/white"
+                    app:slantedTextSize="16sp" />
+            </FrameLayout>
+
+            <site.starsone.xandroidutil.view.SettingItemRadioGroup
+                android:id="@+id/sirb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tip="提示说明"
+                app:text="下载模式"
+                />
+
+            <site.starsone.xandroidutil.view.SettingItemRadioGroup
+                android:id="@+id/sirb2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tip="提示说明"
+                app:text="下载模式垂直的"
+                />
+
+            <site.starsone.xandroidutil.view.SettingItemSwitch
+                android:id="@+id/siSwtich"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tip="提示说明"
+                app:text="测试开关"
+                />
+
+            <site.starsone.xandroidutil.view.SettingItemTextInt
+                android:id="@+id/siText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tip="提示说明222"
+                app:text="测试开关223"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--    正常使用,点击切换图标的选中状态    -->
+                <site.starsone.xandroidutil.view.SelectImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:selectImg="@drawable/ic_baseline_adb_24_gray"
+                    app:normalImg="@drawable/ic_baseline_adb_24_rose"
+                    />
+
+                <!--   选中才展示图标的效果 ,使用透明色  -->
+                <site.starsone.xandroidutil.view.SelectImageView
+                    android:layout_marginStart="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:selectImg="#00000000"
+                    app:normalImg="@drawable/ic_baseline_adb_24_rose"
+                    />
+
+                <!--       着色效果    -->
+                <site.starsone.xandroidutil.view.SelectImageView
+                    android:layout_marginStart="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:selectImgTint="#03bbf3"
+                    app:selectImg="@drawable/ic_baseline_adb_24_gray"
+                    app:normalImg="@drawable/ic_baseline_adb_24_rose"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         app:layout_constraintTop_toTopOf="parent"

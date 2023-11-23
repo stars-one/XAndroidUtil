@@ -106,6 +106,10 @@ class MainActivity : AppCompatActivity() {
         val siSwtich = findViewById<SettingItemSwitch>(R.id.siSwtich)
         siSwtich.setData(SettingItemSwitchData(MyGlobalData.openFlag))
 
+
+        val siText = findViewById<SettingItemTextInt>(R.id.siText)
+        siText.setData(SettingItemTextDataInt(MyGlobalData.mode,dialogTip = "输入数字,此选项重启才会生效",showTip = true))
+
 //        repeat(2) {
 //            val fab = FloatingActionButton(this)
 //            fab.setImageResource(R.drawable.ic_baseline_adb_24)
