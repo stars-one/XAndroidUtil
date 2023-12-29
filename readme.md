@@ -209,6 +209,7 @@ startActivity(LogcatActivity::class.java)
 - `File.getMimeType` 获取文件的mimeType
 - `StateListDrawable.getXStateDrawable` 获取selector中某个状态的drawable
 - `ColorStateList.getColorForState` 获取selector中某个状态的color
+- `ComponentActivity.startActivityForResult` 打开新Activity并可以在回调中直接接收返回叔叔
 
 ## 8.XActivityUtil
 
