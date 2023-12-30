@@ -42,7 +42,7 @@ object XAndroidMethod {
      * @param maxHeight 对话框的最大高度
      * @param okAction 点击确定后的回调
      * @param cancelAction 点击不再提示的回调
-     *
+     *@return 是否有展示对话框
      */
     fun showTipDialog(
         key: String,
@@ -51,7 +51,7 @@ object XAndroidMethod {
         maxHeight: Int = 400,
         okAction: (() -> Unit)? = null,
         cancelAction: (() -> Unit)? = null
-    ) {
+    ) :Boolean{
         val instance = SPUtils.getInstance()
 
         if (instance.getBoolean(key, true)) {
@@ -68,6 +68,9 @@ object XAndroidMethod {
                     false
                 }
                 .show()
+            return true
+        } else {
+            return false
         }
     }
 
