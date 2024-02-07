@@ -4,9 +4,14 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Build
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.webkit.MimeTypeMap
+import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
+import androidx.core.graphics.toColorInt
 import com.google.gson.Gson
 import com.google.gson.internal.`$Gson$Types`
 import java.io.File
@@ -14,6 +19,7 @@ import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.regex.Pattern
 import kotlin.math.log10
 import kotlin.math.pow
 
@@ -234,4 +240,41 @@ fun StateListDrawable.getXStateDrawable(@AttrRes flag: Int): Drawable {
 fun ColorStateList.getColorForState(@AttrRes flag: Int, @ColorInt defaultColor: Int): Int {
     val array = intArrayOf(flag)
     return getColorForState(array, defaultColor)
+}
+
+/**
+ * textview设置关键字高亮
+ * @param contentText 文本内容
+ * @param keyword 关键字
+ * @param colors 高亮的文字颜色
+ *
+ */
+fun TextView.showHighText(
+    contentText: String,
+    colors: List<Int> = listOf("#03a9f4".toColorInt()),
+    vararg keyword: String
+) {
+    //关键字为空,则直接设置文本
+    if (keyword.isEmpty()) {
+        this.text = contentText
+        return
+    }
+
+    val stringBuilder = SpannableStringBuilder(contentText)
+    val lowercaseKeywords = keyword.map { it.toLowerCase(Locale.getDefault()) }
+    val regex = lowercaseKeywords.joinToString("|")
+
+    val matcher = Pattern.compile(regex).matcher(contentText.toLowerCase(Locale.getDefault()))
+    while (matcher.find()) {
+        val start = matcher.start()
+        val end = matcher.end()
+        val color = colors[start % colors.size]
+        stringBuilder.setSpan(
+            ForegroundColorSpan(color),
+            start,
+            end,
+            Spanned.SPAN_INCLUSIVE_INCLUSIVE
+        )
+    }
+    this.text = stringBuilder
 }

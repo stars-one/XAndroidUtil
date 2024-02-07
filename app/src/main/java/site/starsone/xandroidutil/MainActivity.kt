@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.toColorInt
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.hjq.logcat.LogcatActivity
 import site.starsone.xandroidutil.util.GlobalDataConfig
+import site.starsone.xandroidutil.util.showHighText
 import site.starsone.xandroidutil.view.*
 
 class MainActivity : AppCompatActivity() {
@@ -123,6 +125,8 @@ class MainActivity : AppCompatActivity() {
 
 //        val tvHome = findViewById<RemixIconTextView>(R.id.tvHome)
 //        tvHome.iconName = "home-5-fill"
+
+        findViewById<TextView>(R.id.tvHight).showHighText("这是高亮的文本",listOf("#03a9f4".toColorInt(),"#8e24aa".toColorInt()),"高","文本" )
     }
 }
 
