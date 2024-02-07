@@ -547,3 +547,6 @@ mrecyclerview.addItemDecoration(itemDero)
 val itemDero = ItemDecorationGrid(3,12) {outRect, space, position ->  }
 mrecyclerview.addItemDecoration(itemDero)
 ```
+## 16. NetWorkUtil网络工具类
+
+- `ping(host:String)` 向某个域名发起ping请求
