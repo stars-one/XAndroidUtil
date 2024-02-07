@@ -210,6 +210,7 @@ startActivity(LogcatActivity::class.java)
 - `StateListDrawable.getXStateDrawable` 获取selector中某个状态的drawable
 - `ColorStateList.getColorForState` 获取selector中某个状态的color
 - `ComponentActivity.startActivityForResult` 打开新Activity并可以在回调中直接接收返回叔叔
+- `TextView.showHighText` TextView设置关键字高亮
 
 ## 8.XActivityUtil
 
