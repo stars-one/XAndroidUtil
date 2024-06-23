@@ -48,6 +48,12 @@
                 android:layout_height="wrap_content"
                 android:text="打开侧滑" />
 
+            <Button
+                android:id="@+id/btnTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="修改modeStr数据" />
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">

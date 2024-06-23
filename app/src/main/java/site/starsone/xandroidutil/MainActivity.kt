@@ -89,12 +89,18 @@ class MainActivity : AppCompatActivity() {
         ),MyGlobalData.mode))*/
 
         sItemRb.setRbOrientation(1)
-        sItemRb.setData(
-            SettingItemRadioGroupDataString(listOf(
+        val data =  SettingItemRadioGroupDataString(listOf(
             Pair("mode1","模式1"),
             Pair("mode2","模式2")
         ),MyGlobalData.modeStr)
-        )
+        sItemRb.setData(data)
+
+        findViewById<Button>(R.id.btnTest).setOnClickListener {
+            MyGlobalData.modeStr.setValue("mode2")
+            sItemRb.setData(data)
+        }
+
+
         val sItemRb2 = findViewById<SettingItemRadioGroup>(R.id.sirb2)
 
         sItemRb2.setRbOrientation(2)
