@@ -1,5 +1,7 @@
 package site.starsone.xandroidutil.util
 
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.StateListDrawable
@@ -7,11 +9,15 @@ import android.os.Build
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
-import android.webkit.MimeTypeMap
+import android.view.View
+import android.webkit.*
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
+import androidx.annotation.RequiresApi
 import androidx.core.graphics.toColorInt
+import com.blankj.utilcode.util.ActivityUtils
+import com.blankj.utilcode.util.Utils
 import com.google.gson.Gson
 import com.google.gson.internal.`$Gson$Types`
 import java.io.File
@@ -278,3 +284,66 @@ fun TextView.showHighText(
     }
     this.text = stringBuilder
 }
+
+fun View.doClick(action:(v:View)->Unit){
+    setOnClickListener { action.invoke(it) }
+}
+
+fun goActivity(cls: Class<out Any>, paramAppend: Intent.() -> Unit = {}) {
+    try {
+        //可能为空的问题
+        val activity = ActivityUtils.getTopActivity()
+        val intent = Intent(activity, cls)
+        paramAppend?.invoke(intent)
+        activity.startActivity(intent)
+
+    } catch (e: Exception) {
+        val activity = Utils.getApp()
+        //如果不是四大组件上下文启动,需要添加FLAG_ACTIVITY_NEW_TASK标识
+        val intent = Intent(activity, cls).also { it.addFlags(FLAG_ACTIVITY_NEW_TASK) }
+        paramAppend?.invoke(intent)
+        activity.startActivity(intent)
+    }
+}
+
+fun WebView.config() {
+    val webView = this
+    val webSettings = webView.settings
+    //支持插件
+    webSettings.javaScriptEnabled = true
+    //设置自适应屏幕，两者合用
+    webSettings.useWideViewPort = true //将图片调整到适合webview的大小
+    webSettings.loadWithOverviewMode = true // 缩放至屏幕的大小
+
+    //缩放操作
+    webSettings.setSupportZoom(true) //支持缩放，默认为true。是下面那个的前提。
+    webSettings.builtInZoomControls = true //设置内置的缩放控件。若为false，则该WebView不可缩放
+    webSettings.displayZoomControls = false //隐藏原生的缩放控件
+
+    //其他细节操作
+    webSettings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK //关闭webview中缓存
+    webSettings.allowFileAccess = true //设置可以访问文件
+    webSettings.javaScriptCanOpenWindowsAutomatically = true //支持通过JS打开新窗口
+    webSettings.loadsImagesAutomatically = true //支持自动加载图片
+    webSettings.defaultTextEncodingName = "utf-8" //设置编码格式
+    webSettings.domStorageEnabled = true
+    webView.webViewClient = object : WebViewClient() {
+        override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+            view.loadUrl(url)
+            return true
+        }
+
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+        override fun shouldOverrideUrlLoading(
+            view: WebView,
+            request: WebResourceRequest
+        ): Boolean {
+            view.loadUrl(request.url.toString())
+            return true
+        }
+    }
+    //设置这个，才能使js调用alert方法的对话框出现
+    webView.webChromeClient = WebChromeClient()
+}
+
+
