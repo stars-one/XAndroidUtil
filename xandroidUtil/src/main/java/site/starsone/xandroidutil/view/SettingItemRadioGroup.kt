@@ -39,7 +39,7 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
             val ta = obtainStyledAttributes(attrs, R.styleable.SettingItem)
             title = ta.getString(R.styleable.SettingItem_text) ?: ""
             desc = ta.getString(R.styleable.SettingItem_tip) ?: ""
-            showTip = ta.getBoolean(R.styleable.SettingItem_showTip,false)
+            showTip = ta.getBoolean(R.styleable.SettingItem_showTip, false)
 
             refreshData()
             ta.recycle()
@@ -97,6 +97,14 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
         val currentSelectIndex = data.globalData.currentValue
         val list = data.list
 
+        val myrg = if (arrangeType == 1) {
+            //水平方向
+            rg
+        } else {
+            rg2
+        }
+        myrg.removeAllViews()
+
         //创建radiobutton
         val rbList = list.map {
             RadioButton(context).apply {
@@ -107,13 +115,6 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
             }
         }
 
-        val myrg = if (arrangeType == 1) {
-            //水平方向
-            rg
-        } else {
-            rg2
-        }
-
         //加入radiogroup中
         rbList.forEach {
             myrg.addView(it)
@@ -121,9 +122,11 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
 
         //监听数据
         myrg.setOnCheckedChangeListener { _, checkedId ->
-            val rb = this.findViewById<RadioButton>(checkedId)
-            val index = rb.tag.toString().toInt()
-            data.globalData.setValue(index)
+            kotlin.runCatching {
+                val rb = this.findViewById<RadioButton>(checkedId)
+                val index = rb.tag.toString().toInt()
+                data.globalData.setValue(index)
+            }
         }
     }
 
@@ -143,6 +146,14 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
         val currentSelectIndex = data.globalData.currentValue
         val list = data.list
 
+        val myrg = if (arrangeType == 1) {
+            //水平方向
+            rg
+        } else {
+            rg2
+        }
+        myrg.removeAllViews()
+
         //创建radiobutton
 
         val rbList = list.mapIndexed { index, it ->
@@ -154,12 +165,6 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
             }
         }
 
-        val myrg = if (arrangeType == 1) {
-            //水平方向
-            rg
-        } else {
-            rg2
-        }
 
         //加入radiogroup中
         rbList.forEach {
@@ -168,9 +173,11 @@ class SettingItemRadioGroup(context: Context?, attrs: AttributeSet?) :
 
         //监听数据
         myrg.setOnCheckedChangeListener { _, checkedId ->
-            val rb = this.findViewById<RadioButton>(checkedId)
-            val index = rb.tag.toString()
-            data.globalData.setValue(index)
+            kotlin.runCatching {
+                val rb = this.findViewById<RadioButton>(checkedId)
+                val index = rb.tag.toString()
+                data.globalData.setValue(index)
+            }
         }
     }
 }
