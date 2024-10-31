@@ -2,6 +2,7 @@ package site.starsone.xandroidutil.view
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.text.InputType
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.TextView
 import com.blankj.utilcode.util.ToastUtils
 import com.kongzue.dialogx.dialogs.InputDialog
 import com.kongzue.dialogx.dialogs.MessageDialog
+import com.kongzue.dialogx.util.InputInfo
 import site.starsone.xandroidutil.R
 import site.starsone.xandroidutil.util.GlobalDataConfig
 
@@ -105,7 +107,10 @@ class SettingItemTextInt(context: Context?, attrs: AttributeSet?) : RelativeLayo
                     ToastUtils.showShort("修改失败,你输入的不是数字")
                 }
                 false
-            }.show()
+            }
+                .setInputText(data.globalData.currentValue.toString())
+                .setInputInfo(InputInfo().setInputType(InputType.TYPE_CLASS_NUMBER))
+                .show()
         }
     }
 }
